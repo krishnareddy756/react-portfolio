@@ -1,0 +1,251 @@
+/* Modern Navbar Styles */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--background-card);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.navbar-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary-color);
+}
+
+.navbar-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Desktop Menu */
+.navbar-menu {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-link {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.navbar-link:hover {
+  color: var(--primary-color);
+  background: var(--background-tertiary);
+}
+
+.navbar-link-active {
+  color: var(--primary-color);
+  background: var(--background-tertiary);
+}
+
+.navbar-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+/* Theme toggle spacing */
+.navbar-menu > *:last-child {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border-color);
+}
+
+/* Mobile Menu */
+.navbar-mobile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-mobile-toggle:hover {
+  background: var(--background-tertiary);
+  color: var(--primary-color);
+}
+
+/* Mobile Menu Dropdown */
+.navbar-mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background-card);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-mobile-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.navbar-mobile-link {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link-active {
+  color: var(--primary-color);
+  background: var(--background-tertiary);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .navbar-menu {
+    display: flex;
+  }
+  
+  .navbar-mobile {
+    display: none;
+  }
+}
+
+/* Scroll Effect */
+.navbar.scrolled {
+  background: var(--background-card);
+  box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .navbar {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+  background: var(--background-card);
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .navbar {
+    border-bottom-width: 2px;
+  }
+  
+  .navbar-link,
+  .navbar-mobile-link {
+    border: 1px solid transparent;
+  }
+  
+  .navbar-link:hover,
+  .navbar-link-active,
+  .navbar-mobile-link:hover,
+  .navbar-mobile-link-active {
+    border-color: var(--primary-color);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-link,
+  .navbar-mobile-toggle,
+  .navbar-mobile-link {
+    transition: none;
+  }
+  
+  .navbar-mobile-menu {
+    animation: none;
+  }
+}
+
+/* Focus States */
+.navbar-link:focus,
+.navbar-mobile-link:focus,
+.navbar-mobile-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .navbar {
+    display: none;
+  }
+}

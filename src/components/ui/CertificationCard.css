@@ -1,0 +1,287 @@
+/* CertificationCard Component Styles */
+
+.certification-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 0.8s ease forwards;
+}
+
+.certification-card:nth-child(1) { animation-delay: 0.1s; }
+.certification-card:nth-child(2) { animation-delay: 0.3s; }
+.certification-card:nth-child(3) { animation-delay: 0.5s; }
+
+.certification-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.certification-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px var(--shadow-light);
+}
+
+.certification-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.certification-icon-wrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px var(--shadow-light);
+}
+
+.certification-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: white;
+}
+
+.certification-verified-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--success-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.certification-verified-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.certification-content {
+  text-align: left;
+}
+
+.certification-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.certification-issuer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--background-tertiary);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.certification-issuer-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary-color);
+}
+
+.certification-issuer-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.certification-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.certification-date-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--primary-color);
+}
+
+.certification-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.certification-skills {
+  margin-bottom: 1.5rem;
+}
+
+.certification-skills-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.certification-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.certification-skill-tag {
+  background: var(--background-tertiary);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.certification-skill-tag:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: var(--background-primary);
+  transform: translateY(-1px);
+}
+
+.certification-actions {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.certification-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.certification-view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow-medium);
+  color: white;
+}
+
+.certification-view-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .certification-card {
+    padding: 1.5rem;
+  }
+  
+  .certification-card-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .certification-title {
+    font-size: 1.25rem;
+  }
+  
+  .certification-issuer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .certification-skills-list {
+    justify-content: center;
+  }
+  
+  .certification-actions {
+    text-align: center;
+  }
+}
+
+/* Animations */
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects for skill tags */
+.certification-skills-list:hover .certification-skill-tag {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.certification-skills-list:hover .certification-skill-tag:hover {
+  opacity: 1;
+}
+
+/* Focus states for accessibility */
+.certification-card:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.certification-view-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .certification-card {
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+  
+  .certification-view-btn {
+    display: none;
+  }
+  
+  .certification-skill-tag {
+    border: 1px solid #ccc;
+    background: white;
+    color: black;
+  }
+  
+  .certification-verified-badge {
+    background: #f0f0f0;
+    color: black;
+    box-shadow: none;
+  }
+}

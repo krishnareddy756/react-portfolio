@@ -1,0 +1,209 @@
+/* Modern Certifications Section Styles - Matching Skills Section */
+
+#certifications {
+  background: var(--background-primary);
+  position: relative;
+}
+
+/* Certifications Categories - Same as Skills Categories */
+.certifications-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.certifications-category {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.certifications-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.certifications-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  color: white;
+}
+
+.certifications-icon-blue {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.certifications-icon-orange {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.certifications-category-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Certifications List - Same as Skills List */
+.certifications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.certification-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--background-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.certification-tag:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-colored);
+}
+
+.certification-link {
+  cursor: pointer;
+}
+
+.certification-link:hover {
+  text-decoration: none;
+}
+
+.certification-link:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Responsive Design - Same as Skills Section */
+@media (max-width: 768px) {
+  .certifications-categories {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .certifications-category {
+    gap: 1.25rem;
+  }
+  
+  .certifications-category-header {
+    gap: 0.75rem;
+  }
+  
+  .certifications-category-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .certifications-category-title {
+    font-size: 1.125rem;
+  }
+  
+  .certifications-list {
+    gap: 0.5rem;
+  }
+  
+  .certification-tag {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-categories {
+    gap: 1rem;
+  }
+  
+  .certifications-category {
+    gap: 1rem;
+  }
+  
+  .certification-tag {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation Classes */
+.certifications-animate-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: certificationsFadeIn 0.6s ease forwards;
+}
+
+@keyframes certificationsFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.certifications-stagger-1 { animation-delay: 0.1s; }
+.certifications-stagger-2 { animation-delay: 0.2s; }
+.certifications-stagger-3 { animation-delay: 0.3s; }
+
+/* Hover Effects */
+.certifications-category:hover .certification-tag {
+  transform: translateY(-1px);
+}
+
+/* Focus States for Accessibility */
+.certification-tag:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .certification-tag {
+    border-width: 2px;
+  }
+  
+  .certifications-category-icon {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .certification-tag,
+  .certifications-animate-in {
+    transition: none;
+    animation: none;
+  }
+  
+  .certification-tag:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .certifications-category {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .certification-tag {
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+  }
+}

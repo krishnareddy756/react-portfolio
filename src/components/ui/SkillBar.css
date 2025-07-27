@@ -1,0 +1,286 @@
+/* SkillBar Component Styles */
+
+.skill-bar-container {
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.skill-bar-container:nth-child(1) { animation-delay: 0.1s; }
+.skill-bar-container:nth-child(2) { animation-delay: 0.2s; }
+.skill-bar-container:nth-child(3) { animation-delay: 0.3s; }
+.skill-bar-container:nth-child(4) { animation-delay: 0.4s; }
+.skill-bar-container:nth-child(5) { animation-delay: 0.5s; }
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.skill-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.skill-category {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.skill-level-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill-level-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+.skill-level-badge.skill-expert {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.skill-level-badge.skill-advanced {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.skill-level-badge.skill-intermediate {
+  background: var(--warning-color);
+  color: white;
+  border-color: var(--warning-color);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.skill-level-badge.skill-beginner {
+  background: var(--background-tertiary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.skill-percentage {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 3rem;
+  text-align: right;
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 0.75rem;
+  background: var(--background-tertiary);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-color);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 0.375rem;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar-fill.skill-expert {
+  background: linear-gradient(90deg, var(--success-color), #34d399);
+}
+
+.skill-bar-fill.skill-advanced {
+  background: var(--gradient-primary);
+}
+
+.skill-bar-fill.skill-intermediate {
+  background: linear-gradient(90deg, var(--warning-color), #fbbf24);
+}
+
+.skill-bar-fill.skill-beginner {
+  background: linear-gradient(90deg, var(--text-secondary), var(--border-color));
+}
+
+.skill-bar-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Hover effects */
+.skill-bar-container:hover .skill-bar-track {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--shadow-light);
+}
+
+.skill-bar-container:hover .skill-name {
+  color: var(--primary-color);
+}
+
+.skill-bar-container:hover .skill-percentage {
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .skill-bar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .skill-level-info {
+    align-self: flex-end;
+  }
+  
+  .skill-name {
+    font-size: 0.95rem;
+  }
+  
+  .skill-bar-track {
+    height: 0.625rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Pulse animation for skill percentage */
+.skill-percentage {
+  animation: pulse 2s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Focus states for accessibility */
+.skill-bar-container:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Print styles */
+@media print {
+  .skill-bar-container {
+    margin-bottom: 0.75rem;
+    page-break-inside: avoid;
+  }
+  
+  .skill-bar-track {
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+  }
+  
+  .skill-bar-fill {
+    background: #333 !important;
+  }
+  
+  .skill-level-badge {
+    border: 1px solid #ccc;
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+  
+  .skill-bar-shine {
+    display: none;
+  }
+}
+
+/* Loading state */
+.skill-bar-container.loading .skill-bar-track {
+  background: linear-gradient(90deg, var(--background-tertiary), var(--border-color), var(--background-tertiary));
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Skill bar variants for different categories */
+.skill-bar-container[data-category="Programming"] .skill-bar-fill {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.skill-bar-container[data-category="Frontend"] .skill-bar-fill {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.skill-bar-container[data-category="Backend"] .skill-bar-fill {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.skill-bar-container[data-category="Database"] .skill-bar-fill {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+}
+
+.skill-bar-container[data-category="Mobile"] .skill-bar-fill {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.skill-bar-container[data-category="DevOps"] .skill-bar-fill {
+  background: linear-gradient(90deg, #6b7280, #4b5563);
+}

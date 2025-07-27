@@ -1,0 +1,279 @@
+/* Modern Download Resume Styles */
+
+/* Button enhancements for download components */
+.download-resume-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.download-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 2px 4px var(--shadow-colored);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-resume-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-colored);
+}
+
+.download-resume-btn:active {
+  transform: translateY(0);
+}
+
+.download-resume-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.download-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.download-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.download-btn-title {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.download-btn-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* Print button */
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.print-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.print-btn:active {
+  transform: translateY(0);
+}
+
+/* Icon variants */
+.download-resume-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-colored);
+}
+
+.download-resume-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-colored);
+}
+
+.download-resume-icon:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Compact variant */
+.download-resume-compact {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.download-btn-compact,
+.print-btn-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.download-btn-compact {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  box-shadow: 0 1px 3px var(--shadow-colored);
+}
+
+.download-btn-compact:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px var(--shadow-colored);
+}
+
+.print-btn-compact {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.print-btn-compact:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Loading states */
+.download-spinner,
+.download-spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.download-spinner-small {
+  width: 14px;
+  height: 14px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Icon styling */
+.download-icon,
+.print-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.download-icon-small,
+.print-icon-small {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .download-resume-container {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-resume-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+  
+  .download-btn-subtitle {
+    display: none;
+  }
+  
+  .download-resume-compact {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .download-btn-compact,
+  .print-btn-compact {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* Focus states for accessibility */
+.download-resume-btn:focus,
+.print-btn:focus,
+.download-resume-icon:focus,
+.download-btn-compact:focus,
+.print-btn-compact:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .download-resume-btn,
+  .download-btn-compact {
+    border: 2px solid white;
+  }
+  
+  .print-btn,
+  .print-btn-compact {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .download-resume-btn,
+  .print-btn,
+  .download-resume-icon,
+  .download-btn-compact,
+  .print-btn-compact,
+  .download-spinner,
+  .download-spinner-small {
+    transition: none;
+    animation: none;
+  }
+  
+  .download-resume-btn:hover,
+  .print-btn:hover,
+  .download-resume-icon:hover,
+  .download-btn-compact:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .download-resume-container,
+  .download-resume-compact,
+  .download-resume-icon {
+    display: none;
+  }
+}

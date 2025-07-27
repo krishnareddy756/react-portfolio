@@ -1,0 +1,251 @@
+/* Print Styles for Portfolio */
+
+@media print {
+  /* Reset for print */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 0.5in;
+    size: A4;
+  }
+
+  /* Body styles */
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+    background: white !important;
+  }
+
+  /* Hide elements that shouldn't be printed */
+  .no-print,
+  .matrix-background,
+  nav,
+  .navbar,
+  .theme-toggle,
+  .scroll-indicator,
+  .floating-elements,
+  .animation-container,
+  button:not(.print-button),
+  .social-links a[href^="mailto"]:after,
+  .social-links a[href^="tel"]:after {
+    display: none !important;
+  }
+
+  /* Show only essential content */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Typography for print */
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 12pt;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-top: 16pt;
+    margin-bottom: 8pt;
+    page-break-after: avoid;
+    border-bottom: 1pt solid #ccc;
+    padding-bottom: 4pt;
+  }
+
+  h3 {
+    font-size: 14pt;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+    page-break-after: avoid;
+  }
+
+  h4, h5, h6 {
+    font-size: 12pt;
+    margin-top: 8pt;
+    margin-bottom: 4pt;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-bottom: 6pt;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Links */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  /* Show URLs for important links */
+  .social-links a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Contact information */
+  .contact-info {
+    margin-bottom: 16pt;
+    padding: 8pt;
+    border: 1pt solid #ccc;
+  }
+
+  /* Experience and Education */
+  .experience-item,
+  .education-item,
+  .project-item {
+    margin-bottom: 12pt;
+    page-break-inside: avoid;
+    border-left: 2pt solid #ccc;
+    padding-left: 8pt;
+  }
+
+  /* Skills section */
+  .skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8pt !important;
+  }
+
+  .skill-item {
+    margin-bottom: 4pt;
+    font-size: 10pt;
+  }
+
+  /* Projects */
+  .project-card {
+    margin-bottom: 16pt;
+    padding: 8pt;
+    border: 1pt solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .project-tech {
+    font-size: 10pt;
+    color: #666 !important;
+  }
+
+  /* Certifications */
+  .certification-item {
+    margin-bottom: 8pt;
+    padding: 4pt;
+    border-bottom: 1pt dotted #ccc;
+  }
+
+  /* Achievements */
+  .achievement-item {
+    margin-bottom: 6pt;
+    font-size: 11pt;
+  }
+
+  /* Page breaks */
+  .page-break {
+    page-break-before: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Header for each page */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    font-size: 10pt;
+    color: #666 !important;
+    margin-bottom: 16pt;
+    padding-bottom: 8pt;
+    border-bottom: 1pt solid #ccc;
+  }
+
+  /* Footer for each page */
+  .print-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10pt;
+    color: #666 !important;
+    padding-top: 8pt;
+    border-top: 1pt solid #ccc;
+  }
+
+  /* Compact layout for print */
+  .container,
+  .container-wide {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .section-padding,
+  .section-padding-sm {
+    padding: 8pt 0 !important;
+  }
+
+  /* Grid adjustments for print */
+  .grid {
+    gap: 8pt !important;
+  }
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Remove unnecessary spacing */
+  .mb-4, .mb-6, .mb-8 {
+    margin-bottom: 8pt !important;
+  }
+
+  .mt-4, .mt-6, .mt-8 {
+    margin-top: 8pt !important;
+  }
+
+  /* Ensure text is readable */
+  .text-gradient {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: black !important;
+    background-clip: unset !important;
+    color: black !important;
+  }
+
+  /* Card styles for print */
+  .card {
+    border: 1pt solid #ccc !important;
+    padding: 8pt !important;
+    margin-bottom: 8pt !important;
+    background: white !important;
+  }
+
+  /* Button styles for print */
+  .btn {
+    border: 1pt solid #ccc !important;
+    padding: 4pt 8pt !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide decorative elements */
+  .decoration,
+  .background-pattern,
+  .gradient-bg,
+  .blur-effect {
+    display: none !important;
+  }
+}
