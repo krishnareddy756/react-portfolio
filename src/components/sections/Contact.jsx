@@ -30,11 +30,11 @@ const Contact = () => {
     errorMessage: "",
   });
 
-  // EmailJS configuration - Updated with correct credentials
+  // EmailJS configuration - Using environment variables
   const EMAILJS_CONFIG = {
-    serviceId: "service_zc782hd",
-    templateId: "template_d4tbg1k", 
-    publicKey: "hFlS2-XfYJ599_3Ag",
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
   };
 
 
