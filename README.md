@@ -1,19 +1,29 @@
 # React Portfolio 💼
 
-This is a personal developer portfolio built using React.js and styled with Tailwind CSS. It includes:
+This is my personal developer portfolio built using **React.js** and styled with **Tailwind CSS**. It showcases my skills, projects, and provides an easy way to get in touch.
+
+## ✨ Features
 
 - 💡 About section
-- 💻 Skills section
-- 🚀 Projects with interactive cards
+- 💻 Skills with colorful tech badges
+- 🚀 Projects with interactive cards and logos
 - 📬 Contact form (EmailJS integration)
-- 🌗 Dark mode support
-- 📱 Responsive design
+- 🌗 Dark mode toggle
+- 📱 Fully responsive design
 
-## Live Preview
+## 🔗 Live Preview
 
-[Coming Soon or Add Your Vercel/Netlify link here]
+👉 [View Portfolio](https://krishnareddy756.vercel.app)
 
-## Contact
+## 📁 Repository
 
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/krishna-reddy-ab8017275/) or via the contact form!
+[GitHub Source Code](https://github.com/krishnareddy756/react-portfolio)
 
+## 📞 Contact
+
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/krishna-reddy-ab8017275/)  
+Or send a message via the [Contact Form](https://krishnareddy756.vercel.app/#contact)
+
+---
+
+Made with ❤️ by Krishna Reddy
