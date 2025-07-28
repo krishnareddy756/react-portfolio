@@ -19,7 +19,7 @@ export const PERSONAL_INFO = {
   },
   
   // Resume file path
-  resumePath: "/src/assets/resume/sai-krishna-reddy-resume.pdf"
+  resumePath: "https://drive.google.com/file/d/1ogKOsc3DpxyTG88X00NXhzsTcRKUGlsB/view?usp=sharing"
 };
 
 // Education Information
