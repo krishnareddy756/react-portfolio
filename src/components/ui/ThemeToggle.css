@@ -15,6 +15,34 @@
   color: var(--text-primary);
 }
 
+/* Circular Theme Toggle */
+.theme-toggle-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: var(--background-card);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-toggle-circle svg {
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .theme-toggle:hover {
   background: var(--primary-color);
   color: white;
@@ -24,6 +52,24 @@
 
 .theme-toggle:active {
   transform: translateY(0);
+}
+
+/* Circular Theme Toggle Hover States */
+.theme-toggle-circle:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle-circle:active {
+  transform: scale(1.05);
+}
+
+.theme-toggle-circle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 /* Icon styling */
@@ -49,9 +95,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 36px;
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background: var(--background-card);
   border: 1px solid var(--border-color);
 }

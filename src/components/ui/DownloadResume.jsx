@@ -37,7 +37,16 @@ const DownloadResume = ({ variant = 'primary', showLabel = true }) => {
   };
 
   const handlePrint = () => {
-    window.print();
+    // Open resume in new window and print it
+    const printWindow = window.open(PERSONAL_INFO.resumePath, '_blank');
+    if (printWindow) {
+      printWindow.onload = () => {
+        printWindow.print();
+      };
+    } else {
+      // Fallback: just open the resume
+      window.open(PERSONAL_INFO.resumePath, '_blank');
+    }
   };
 
   if (variant === 'icon') {

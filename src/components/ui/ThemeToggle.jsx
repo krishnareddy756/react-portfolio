@@ -17,20 +17,15 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="btn-modern btn-modern-outline theme-toggle focus-ring"
+      className="theme-toggle-circle focus-ring"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
-      <div className="theme-icon">
-        {isDark ? (
-          <Moon className="h-4 w-4" />
-        ) : (
-          <Sun className="h-4 w-4" />
-        )}
-      </div>
-      <span className="theme-label">
-        {isDark ? 'Dark' : 'Light'}
-      </span>
+      {isDark ? (
+        <Moon className="h-4 w-4" />
+      ) : (
+        <Sun className="h-4 w-4" />
+      )}
     </button>
   );
 };
