@@ -1,23 +1,53 @@
-import React from 'react';
-import { Github, ExternalLink, Calendar, Tag } from 'lucide-react';
+import React, { useState } from 'react';
+import { Github, ExternalLink, Calendar, Tag, Filter } from 'lucide-react';
 import { PROJECTS } from '../../utils/constants';
+import AnimatedSection, { StaggeredContainer, HoverAnimation } from '../animations/AnimatedSection';
 import './Projects.css';
 
 const Projects = () => {
+  const [selectedFilter, setSelectedFilter] = useState('All');
+  
+  // Get unique categories for filtering
+  const categories = ['All', ...new Set(PROJECTS.map(project => project.category))];
+  
+  // Filter projects based on selected category
+  const filteredProjects = selectedFilter === 'All' 
+    ? PROJECTS 
+    : PROJECTS.filter(project => project.category === selectedFilter);
+
   return (
     <section id="projects" className="section">
       <div className="container">
-        <div className="section-header">
+        <AnimatedSection animation="fadeInUp" className="section-header">
           <h2 className="section-title">Featured Projects</h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
             A showcase of my recent work and personal projects that demonstrate my technical skills and problem-solving abilities.
           </p>
-        </div>
+        </AnimatedSection>
 
-        <div className="projects-grid">
-          {PROJECTS.map((project, index) => (
-            <div key={project.id} className="project-card modern-card">
+        {/* Project Filter */}
+        <AnimatedSection animation="fadeInUp" delay={0.2} className="projects-filter">
+          <div className="filter-header">
+            <Filter className="h-5 w-5" />
+            <span>Filter by Category</span>
+          </div>
+          <div className="filter-buttons">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedFilter(category)}
+                className={`filter-btn ${selectedFilter === category ? 'active' : ''}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        <StaggeredContainer className="projects-grid" staggerDelay={0.15}>
+          {filteredProjects.map((project, index) => (
+            <HoverAnimation key={project.id} className="project-card modern-card" scale={1.02} y={-8}>
               {/* Project Header */}
               <div className="project-header">
                 <div className="project-category">
@@ -86,9 +116,9 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </HoverAnimation>
           ))}
-        </div>
+        </StaggeredContainer>
 
         {/* View More Projects */}
         <div className="projects-footer">

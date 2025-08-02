@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './hooks/useTheme.jsx';
+import { initPerformanceMonitoring } from './utils/performance.js';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
@@ -67,6 +68,11 @@ const AppContent = () => {
 };
 
 const App = () => {
+  // Initialize performance monitoring on app start
+  useEffect(() => {
+    initPerformanceMonitoring();
+  }, []);
+
   return (
     <ThemeProvider>
       <AppContent />
