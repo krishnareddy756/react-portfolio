@@ -1,0 +1,143 @@
+/* CSS-based animations to replace framer-motion */
+
+/* Base animated section styles */
+.animated-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--animation-duration, 0.6s) ease-out;
+  transition-delay: var(--animation-delay, 0s);
+}
+
+.animated-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-section.animate-out {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Reduced motion preferences */
+.animated-section.reduce-motion {
+  transition-duration: 0.2s;
+  transform: none;
+}
+
+.animated-section.reduce-motion.animate-in {
+  opacity: 1;
+}
+
+.animated-section.reduce-motion.animate-out {
+  opacity: 0;
+}
+
+/* Staggered container animations */
+.staggered-container {
+  opacity: 0;
+}
+
+.staggered-container.animate-in {
+  opacity: 1;
+}
+
+.staggered-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+.staggered-container.animate-in .staggered-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover animations */
+.hover-animation {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-animation:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Text reveal animations */
+.text-reveal {
+  overflow: hidden;
+}
+
+.text-reveal-word {
+  display: inline-block;
+  margin-right: 0.25em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--word-duration, 0.8s) ease-out;
+  transition-delay: var(--word-delay, 0s);
+}
+
+.text-reveal.animate-in .text-reveal-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation variants */
+.animated-section.fade-in {
+  transform: none;
+}
+
+.animated-section.fade-in-up {
+  transform: translateY(30px);
+}
+
+.animated-section.fade-in-down {
+  transform: translateY(-30px);
+}
+
+.animated-section.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.animated-section.fade-in-right {
+  transform: translateX(30px);
+}
+
+.animated-section.scale-in {
+  transform: scale(0.9);
+}
+
+.animated-section.slide-in-up {
+  transform: translateY(50px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-section {
+    transform: translateY(20px);
+  }
+  
+  .staggered-item {
+    transform: translateY(15px);
+  }
+  
+  .hover-animation:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-section,
+  .staggered-item,
+  .text-reveal-word,
+  .hover-animation {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .hover-animation:hover {
+    transform: none;
+  }
+}

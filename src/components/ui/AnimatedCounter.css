@@ -1,0 +1,109 @@
+/* AnimatedCounter Component Styles */
+.animated-counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--animation-normal, 0.3s) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* Size Variants */
+.animated-counter-small {
+  font-size: 1rem;
+}
+
+.animated-counter-medium {
+  font-size: 1.5rem;
+}
+
+.animated-counter-large {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.animated-counter-xl {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* Color Variants */
+.animated-counter-primary {
+  color: var(--primary-color);
+}
+
+.animated-counter-secondary {
+  color: var(--secondary-color);
+}
+
+.animated-counter-success {
+  color: var(--success-color, #28a745);
+}
+
+.animated-counter-warning {
+  color: var(--warning-color, #ffc107);
+}
+
+.animated-counter-danger {
+  color: var(--danger-color, #dc3545);
+}
+
+.animated-counter-github {
+  color: var(--github-primary, #24292e);
+}
+
+.animated-counter-leetcode {
+  color: var(--leetcode-primary, #ffa116);
+}
+
+/* Animation Effects */
+.animated-counter-glow {
+  text-shadow: 0 0 10px currentColor;
+  animation: counterGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes counterGlow {
+  from {
+    text-shadow: 0 0 5px currentColor;
+  }
+  to {
+    text-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
+}
+
+.animated-counter-pulse {
+  animation: counterPulse 2s ease-in-out infinite;
+}
+
+@keyframes counterPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Hover Effects */
+.animated-counter-hover:hover {
+  transform: scale(1.1);
+  transition: transform var(--animation-fast, 0.15s) var(--easing-bounce, cubic-bezier(0.68, -0.55, 0.265, 1.55));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .animated-counter-large {
+    font-size: 1.75rem;
+  }
+  
+  .animated-counter-xl {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-counter-large {
+    font-size: 1.5rem;
+  }
+  
+  .animated-counter-xl {
+    font-size: 2rem;
+  }
+}

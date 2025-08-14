@@ -13,9 +13,7 @@ export default defineConfig({
         manualChunks: {
           // Vendor chunks
           'react-vendor': ['react', 'react-dom'],
-          'animation-vendor': ['framer-motion'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'utils-vendor': ['zustand', 'react-intersection-observer']
+          'ui-vendor': ['lucide-react']
         }
       }
     },
@@ -44,13 +42,19 @@ export default defineConfig({
     include: [
       'react',
       'react-dom',
-      'framer-motion',
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
-      'zustand',
-      'react-intersection-observer'
-    ]
+      'lucide-react'
+    ],
+    force: true
+  },
+  
+  // Resolve configuration for compatibility
+  resolve: {
+    dedupe: ['react', 'react-dom']
+  },
+  
+  // ESBuild configuration for React 19 compatibility
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' }
   },
   
   // Asset handling

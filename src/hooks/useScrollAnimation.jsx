@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 
-// Custom hook for scroll-triggered animations
+// Custom hook for scroll-triggered animations using native Intersection Observer
 export function useScrollAnimation(options = {}) {
   const {
     threshold = 0.1,
@@ -10,13 +9,38 @@ export function useScrollAnimation(options = {}) {
     delay = 0
   } = options;
 
-  const [ref, inView] = useInView({
-    threshold,
-    triggerOnce,
-    rootMargin
-  });
-
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [inView, setInView] = useState(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (triggerOnce) {
+            observer.unobserve(entry.target);
+          }
+        } else if (!triggerOnce) {
+          setInView(false);
+        }
+      },
+      {
+        threshold,
+        rootMargin
+      }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, [threshold, triggerOnce, rootMargin]);
 
   useEffect(() => {
     if (inView) {
@@ -27,10 +51,10 @@ export function useScrollAnimation(options = {}) {
     }
   }, [inView, delay]);
 
-  return [ref, shouldAnimate];
+  return [elementRef, shouldAnimate];
 }
 
-// Hook for staggered animations
+// Hook for staggered animations using native Intersection Observer
 export function useStaggeredAnimation(itemCount, options = {}) {
   const {
     staggerDelay = 100,
@@ -38,12 +62,38 @@ export function useStaggeredAnimation(itemCount, options = {}) {
     triggerOnce = true
   } = options;
 
-  const [ref, inView] = useInView({
-    threshold,
-    triggerOnce
-  });
-
+  const [inView, setInView] = useState(false);
   const [animatedItems, setAnimatedItems] = useState(new Set());
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (triggerOnce) {
+            observer.unobserve(entry.target);
+          }
+        } else if (!triggerOnce) {
+          setInView(false);
+          setAnimatedItems(new Set());
+        }
+      },
+      {
+        threshold
+      }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, [threshold, triggerOnce]);
 
   useEffect(() => {
     if (inView) {
@@ -55,7 +105,7 @@ export function useStaggeredAnimation(itemCount, options = {}) {
     }
   }, [inView, itemCount, staggerDelay]);
 
-  return [ref, animatedItems];
+  return [elementRef, animatedItems];
 }
 
 // Hook for parallax scrolling effect

@@ -1,0 +1,119 @@
+/* ProgressRing Component Styles */
+.progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring-svg {
+  transform: rotate(0deg);
+  transition: all var(--animation-slow, 0.6s) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.progress-ring-background {
+  opacity: 0.3;
+}
+
+.progress-ring-progress {
+  transition: stroke-dashoffset var(--animation-slow, 0.6s) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.progress-ring-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.progress-ring-percentage {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-ring-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  font-weight: 500;
+  max-width: 80px;
+  line-height: 1.2;
+}
+
+/* Hover Effects */
+.progress-ring:hover .progress-ring-svg {
+  transform: scale(1.05);
+}
+
+.progress-ring:hover .progress-ring-progress {
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+/* Size Variants */
+.progress-ring-small {
+  --size: 80px;
+}
+
+.progress-ring-small .progress-ring-percentage {
+  font-size: 1rem;
+}
+
+.progress-ring-small .progress-ring-label {
+  font-size: 0.65rem;
+  max-width: 60px;
+}
+
+.progress-ring-large {
+  --size: 160px;
+}
+
+.progress-ring-large .progress-ring-percentage {
+  font-size: 1.75rem;
+}
+
+.progress-ring-large .progress-ring-label {
+  font-size: 0.9rem;
+  max-width: 120px;
+}
+
+/* Animation Classes */
+.progress-ring-animate-in .progress-ring-progress {
+  animation: progressRingFillIn var(--animation-slow, 0.6s) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+}
+
+@keyframes progressRingFillIn {
+  from {
+    stroke-dashoffset: var(--circumference, 377);
+  }
+  to {
+    stroke-dashoffset: var(--final-offset, 0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .progress-ring-percentage {
+    font-size: 1.1rem;
+  }
+  
+  .progress-ring-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-ring-percentage {
+    font-size: 1rem;
+  }
+  
+  .progress-ring-label {
+    font-size: 0.65rem;
+    max-width: 70px;
+  }
+}

@@ -1,78 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useScrollAnimation, useReducedMotion } from '../../hooks/useScrollAnimation';
+import './AnimatedSection.css';
 
-// Predefined animation variants
-export const animationVariants = {
-  // Fade animations
-  fadeIn: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  },
-  
-  fadeInUp: {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0 }
-  },
-  
-  fadeInDown: {
-    hidden: { opacity: 0, y: -60 },
-    visible: { opacity: 1, y: 0 }
-  },
-  
-  fadeInLeft: {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0 }
-  },
-  
-  fadeInRight: {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0 }
-  },
-  
-  // Scale animations
-  scaleIn: {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 }
-  },
-  
-  scaleInRotate: {
-    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
-    visible: { opacity: 1, scale: 1, rotate: 0 }
-  },
-  
-  // Slide animations
-  slideInUp: {
-    hidden: { y: 100, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  },
-  
-  slideInDown: {
-    hidden: { y: -100, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  },
-  
-  // Complex animations
-  bounceIn: {
-    hidden: { opacity: 0, scale: 0.3 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20
-      }
-    }
-  },
-  
-  flipIn: {
-    hidden: { opacity: 0, rotateY: -90 },
-    visible: { opacity: 1, rotateY: 0 }
-  }
-};
-
-// Main animated section component
+// Main animated section component using CSS animations
 export default function AnimatedSection({ 
   children, 
   animation = 'fadeInUp',
@@ -90,25 +20,21 @@ export default function AnimatedSection({
   });
   const prefersReducedMotion = useReducedMotion();
 
-  // Use simple fade for reduced motion
-  const selectedAnimation = prefersReducedMotion ? 'fadeIn' : animation;
-  const variant = animationVariants[selectedAnimation] || animationVariants.fadeInUp;
+  const animationClass = shouldAnimate ? 'animate-in' : 'animate-out';
+  const motionClass = prefersReducedMotion ? 'reduce-motion' : '';
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={className}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      variants={variant}
-      transition={{
-        duration: prefersReducedMotion ? 0.2 : duration,
-        ease: "easeOut"
+      className={`animated-section ${animationClass} ${motionClass} ${className}`}
+      style={{
+        '--animation-duration': `${duration}s`,
+        '--animation-delay': `${delay}s`
       }}
       {...props}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -121,62 +47,42 @@ export function StaggeredContainer({
   ...props 
 }) {
   const prefersReducedMotion = useReducedMotion();
-  const selectedAnimation = prefersReducedMotion ? 'fadeIn' : animation;
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : staggerDelay
-      }
-    }
-  };
-
   const [ref, shouldAnimate] = useScrollAnimation();
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={className}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      variants={containerVariants}
+      className={`staggered-container ${shouldAnimate ? 'animate-in' : 'animate-out'} ${className}`}
       {...props}
     >
       {React.Children.map(children, (child, index) => (
-        <motion.div
+        <div
           key={index}
-          variants={animationVariants[selectedAnimation]}
-          transition={{ duration: prefersReducedMotion ? 0.2 : 0.6 }}
+          className="staggered-item"
+          style={{
+            '--stagger-delay': `${index * (prefersReducedMotion ? 0 : staggerDelay)}s`
+          }}
         >
           {child}
-        </motion.div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
 
 // Hover animation wrapper
 export function HoverAnimation({ 
   children, 
-  scale = 1.05, 
-  y = -5,
-  transition = { type: "spring", stiffness: 400, damping: 17 },
   className = '',
   ...props 
 }) {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      className={className}
-      whileHover={prefersReducedMotion ? {} : { scale, y }}
-      whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-      transition={transition}
+    <div
+      className={`hover-animation ${className}`}
       {...props}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -193,39 +99,24 @@ export function TextReveal({
 
   const words = text.split(' ');
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.1
-      }
-    }
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={className}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      variants={containerVariants}
+      className={`text-reveal ${shouldAnimate ? 'animate-in' : 'animate-out'} ${className}`}
       {...props}
     >
       {words.map((word, index) => (
-        <motion.span
+        <span
           key={index}
-          variants={wordVariants}
-          transition={{ duration: prefersReducedMotion ? 0.2 : duration }}
-          style={{ display: 'inline-block', marginRight: '0.25em' }}
+          className="text-reveal-word"
+          style={{
+            '--word-delay': `${index * (prefersReducedMotion ? 0 : 0.1)}s`,
+            '--word-duration': `${duration}s`
+          }}
         >
           {word}
-        </motion.span>
+        </span>
       ))}
-    </motion.div>
+    </div>
   );
 }

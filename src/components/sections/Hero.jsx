@@ -1,10 +1,8 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { Code2, Github, Linkedin, Mail, Eye } from 'lucide-react';
 import { PERSONAL_INFO } from '../../utils/constants';
 import { getAdaptiveSettings } from '../../utils/performance';
 import DownloadResume from '../ui/DownloadResume';
-import ParticleSystem from '../3d/ParticleSystem';
 import './Hero.css';
 
 const Hero = ({ scrollToSection }) => {
@@ -41,127 +39,56 @@ const Hero = ({ scrollToSection }) => {
 
   return (
     <section id="home" className="hero-section">
-      {/* 3D Particle System Background */}
-      {adaptiveSettings.enable3D && (
-        <Suspense fallback={null}>
-          <ParticleSystem 
-            className="hero-particles" 
-            performance={adaptiveSettings.enable3D ? 'high' : 'medium'} 
-          />
-        </Suspense>
-      )}
+      {/* CSS-based background animation */}
+      <div className="hero-background-animation"></div>
       
       <div className="hero-container">
-        <motion.div 
-          className="hero-icon-container"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            type: "spring",
-            stiffness: 260,
-            damping: 20 
-          }}
-        >
+        <div className="hero-icon-container animate-scale-in">
           <div className="hero-icon-wrapper">
             <Code2 className="hero-icon" />
           </div>
-        </motion.div>
+        </div>
         
-        <motion.h1 
-          className="hero-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 0.2 
-          }}
-        >
+        <h1 className="hero-title animate-fade-in-up" style={{'--animation-delay': '0.2s'}}>
           <span className="hero-title-gradient">
             Hello, I'm
           </span>
           <span className="hero-title-name">{PERSONAL_INFO.name}</span>
-        </motion.h1>
+        </h1>
         
-        <motion.div 
-          className="hero-typing-container"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 0.4 
-          }}
-        >
+        <div className="hero-typing-container animate-fade-in-up" style={{'--animation-delay': '0.4s'}}>
           <span className="hero-typing-text">
             {currentText}
             <span className="hero-cursor">|</span>
           </span>
-        </motion.div>
+        </div>
         
-        <motion.p 
-          className="hero-description"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 0.6 
-          }}
-        >
+        <p className="hero-description animate-fade-in-up" style={{'--animation-delay': '0.6s'}}>
           {PERSONAL_INFO.summary}
-        </motion.p>
+        </p>
         
-        <motion.div 
-          className="hero-buttons"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 0.8 
-          }}
-        >
-          <motion.button
+        <div className="hero-buttons animate-fade-in-up" style={{'--animation-delay': '0.8s'}}>
+          <button
             onClick={() => scrollToSection('projects')}
-            className="btn-modern btn-modern-primary hero-button-primary"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="btn-modern btn-modern-primary hero-button-primary hover-animation"
           >
             <Eye className="h-5 w-5" />
             View My Work
-          </motion.button>
-          <motion.button
+          </button>
+          <button
             onClick={() => scrollToSection('contact')}
-            className="btn-modern btn-modern-outline hero-button-secondary"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="btn-modern btn-modern-outline hero-button-secondary hover-animation"
           >
             <Mail className="h-5 w-5" />
             Contact Me
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
         
-        <motion.div 
-          className="hero-resume-section"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 1.0 
-          }}
-        >
+        <div className="hero-resume-section animate-fade-in-up" style={{'--animation-delay': '1.0s'}}>
           <DownloadResume variant="compact" />
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="hero-social-links"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: adaptiveSettings.animationDuration,
-            delay: 1.2 
-          }}
-        >
+        <div className="hero-social-links animate-fade-in-up" style={{'--animation-delay': '1.2s'}}>
           {[
             { href: PERSONAL_INFO.socialLinks.github, icon: <Github className="h-5 w-5" />, label: "GitHub Profile", className: "github-link" },
             { href: PERSONAL_INFO.socialLinks.linkedin, icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn Profile", className: "linkedin-link" },
@@ -177,19 +104,10 @@ const Hero = ({ scrollToSection }) => {
               className: "leetcode-link" 
             }
           ].map((social, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ 
-                duration: 0.3,
-                delay: 1.4 + index * 0.1,
-                type: "spring",
-                stiffness: 260,
-                damping: 20 
-              }}
-              whileHover={{ scale: 1.2, y: -3 }}
-              whileTap={{ scale: 0.9 }}
+              className="hero-social-item hover-animation"
+              style={{'--animation-delay': `${1.4 + index * 0.1}s`}}
             >
               {social.isButton ? (
                 <button 
@@ -210,9 +128,9 @@ const Hero = ({ scrollToSection }) => {
                   {social.icon}
                 </a>
               )}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

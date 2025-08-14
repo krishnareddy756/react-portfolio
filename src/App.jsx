@@ -4,10 +4,11 @@ import { initPerformanceMonitoring } from './utils/performance.js';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
-
 import Education from './components/sections/Education';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
+import GitHub from './components/sections/GitHub/GitHub';
+import LeetCode from './components/sections/LeetCode/LeetCode';
 import Certifications from './components/sections/Certifications';
 import Achievements from './components/sections/Achievements';
 import Contact from './components/sections/Contact';
@@ -20,7 +21,7 @@ const AppContent = () => {
   // Scroll spy for active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'education', 'skills', 'projects', 'certifications', 'achievements', 'contact'];
+      const sections = ['home', 'about', 'education', 'skills', 'projects', 'github', 'leetcode', 'certifications', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -59,6 +60,8 @@ const AppContent = () => {
       <Education />
       <Skills />
       <Projects />
+      <GitHub />
+      <LeetCode />
       <Certifications />
       <Achievements />
       <Contact />

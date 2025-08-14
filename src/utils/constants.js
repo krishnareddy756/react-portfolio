@@ -98,6 +98,33 @@ export const PROJECTS = [
   },
   {
     id: 3,
+    title: "StockNest",
+    subtitle: "Advanced Stock Market Analysis Platform",
+    description: "A comprehensive stock market analysis platform built with modern web technologies, featuring real-time data visualization, portfolio tracking, and advanced analytics for informed investment decisions.",
+    longDescription: "StockNest is a sophisticated stock market analysis platform that provides investors with comprehensive tools for market analysis, portfolio management, and investment decision-making. The platform features real-time stock data, interactive charts, technical indicators, and portfolio tracking capabilities.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Chart.js", "WebSocket", "REST API", "Material-UI"],
+    features: [
+      "Real-time stock price tracking and visualization with interactive charts",
+      "Portfolio management system with performance analytics and risk assessment",
+      "Advanced technical indicators and market analysis tools",
+      "User authentication and personalized dashboard with watchlists",
+      "Responsive design optimized for desktop and mobile trading"
+    ],
+    githubUrl: "https://github.com/krishnareddy756/StockNest",
+    liveUrl: "#", // Update with actual demo URL when available
+    image: "bg-gradient-to-br from-emerald-500 to-blue-600",
+    category: "Full Stack",
+    status: "Completed",
+    featured: true,
+    metrics: {
+      commits: 127,
+      files: 45,
+      contributors: 1,
+      languages: ["JavaScript", "CSS", "HTML"]
+    }
+  },
+  {
+    id: 4,
     title: "Emotion Classification",
     subtitle: "Deep Learning Text Analysis",
     description: "Built a deep learning model using Bidirectional LSTM (Bi-LSTM) and RNN to classify human emotions from text data with high accuracy, precision, recall, F1-score, and confusion matrix evaluation.",
@@ -108,7 +135,7 @@ export const PROJECTS = [
       "Performed extensive text preprocessing using NLTK (tokenization, stopword removal, stemming) and embedded text using Keras Tokenizer",
       "Implemented model evaluation using accuracy, precision, recall, F1-score, and confusion matrix to ensure robust classification performance"
     ],
-    githubUrl: "https://github.com/krishnareddy756/emotion-classification", // Update with actual repo
+    githubUrl: "https://github.com/krishnareddy756/emotion-classification",
     liveUrl: "#", // No live demo for ML model
     image: "bg-gradient-to-br from-green-500 to-blue-600",
     category: "Machine Learning",
@@ -248,6 +275,8 @@ export const NAVIGATION = [
   { id: 'education', label: 'Education', href: '#education' },
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'github', label: 'GitHub', href: '#github' },
+  { id: 'leetcode', label: 'LeetCode', href: '#leetcode' },
   { id: 'certifications', label: 'Certifications', href: '#certifications' },
   { id: 'achievements', label: 'Achievements', href: '#achievements' },
   { id: 'contact', label: 'Contact', href: '#contact' }
@@ -271,6 +300,79 @@ export const ANIMATION_CONFIG = {
   scroll: {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
+  }
+};
+
+// GitHub Data
+export const GITHUB_DATA = {
+  profile: {
+    username: 'krishnareddy756',
+    name: 'Sai Krishna Reddy',
+    bio: 'Android Developer | Full Stack Developer',
+    location: 'Andhra Pradesh, India',
+    publicRepos: 15,
+    totalContributions: 102,
+    totalStars: 3,
+    languagesUsed: 5
+  },
+  repositories: [
+    {
+      id: 1,
+      name: 'StockNest',
+      description: 'Advanced stock market analysis platform with real-time data visualization',
+      url: 'https://github.com/krishnareddy756/StockNest',
+      language: 'JavaScript',
+      languageColor: '#f1e05a',
+      stars: 15,
+      forks: 3,
+      featured: true
+    },
+    {
+      id: 2,
+      name: 'Airbnb_Clone-WonderLust',
+      description: 'Full-stack property rental platform built with MERN stack',
+      url: 'https://github.com/krishnareddy756/Airbnb_Clone-WonderLust-',
+      language: 'JavaScript',
+      languageColor: '#f1e05a',
+      stars: 8,
+      forks: 2,
+      featured: false
+    },
+    {
+      id: 3,
+      name: 'sigmagpt',
+      description: 'AI-powered conversational chatbot using MERN stack and DeepSeek API',
+      url: 'https://github.com/krishnareddy756/sigmagpt',
+      language: 'JavaScript',
+      languageColor: '#f1e05a',
+      stars: 12,
+      forks: 1,
+      featured: false
+    },
+    {
+      id: 4,
+      name: 'emotion-classification',
+      description: 'Deep learning model for emotion classification using Bi-LSTM and RNN',
+      url: 'https://github.com/krishnareddy756/emotion-classification',
+      language: 'Python',
+      languageColor: '#3572A5',
+      stars: 6,
+      forks: 1,
+      featured: false
+    }
+  ]
+};
+
+// LeetCode Data
+export const LEETCODE_DATA = {
+  profile: {
+    username: 'krishnareddy_22bce20126',
+    ranking: 519882,
+    totalSolved: 400,
+    acceptanceRate: 65.0,
+    currentStreak: 50,
+    maxStreak: 50,
+    contestRating: 1431
   }
 };
 
