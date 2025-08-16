@@ -43,12 +43,6 @@ const Hero = ({ scrollToSection }) => {
       <div className="hero-background-animation"></div>
       
       <div className="hero-container">
-        <div className="hero-icon-container animate-scale-in">
-          <div className="hero-icon-wrapper">
-            <Code2 className="hero-icon" />
-          </div>
-        </div>
-        
         <h1 className="hero-title animate-fade-in-up" style={{'--animation-delay': '0.2s'}}>
           <span className="hero-title-gradient">
             Hello, I'm
