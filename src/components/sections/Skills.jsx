@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Globe, Wrench, Trophy, GitBranch, Target, Star, Activity } from 'lucide-react';
+import { Code, Globe, Wrench } from 'lucide-react';
 import { SKILLS } from '../../utils/constants';
 import './Skills.css';
 
@@ -25,22 +25,6 @@ const Skills = () => {
     }
   ];
 
-  // LeetCode Stats (you can update these with real data)
-  const leetcodeStats = {
-    problemsSolved: '300',
-    ranking: '~387k',
-    badges: 3,
-    streak: 45
-  };
-
-  // GitHub Stats (you can update these with real data)
-  const githubStats = {
-    repositories: 15,
-    contributions: 100,
-    followers: 2,
-    stars: 5
-  };
-
   return (
     <section id="skills" className="section">
       <div className="container">
@@ -48,7 +32,7 @@ const Skills = () => {
           <h2 className="section-title">Skills & Technologies</h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
-            Technologies I work with and my coding journey statistics
+            Technologies and tools I work with in my development projects
           </p>
         </div>
 
@@ -74,70 +58,7 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Coding Stats */}
-        <div className="coding-stats">
-          <h3 className="coding-stats-title">Coding Journey</h3>
-          
-          <div className="stats-grid">
-            {/* LeetCode Stats */}
-            <div className="stat-card modern-card">
-              <div className="stat-card-header">
-                <div className="stat-card-icon leetcode-icon">
-                  <Target className="w-6 h-6" />
-                </div>
-                <h4 className="stat-card-title">LeetCode</h4>
-              </div>
-              
-              <div className="stat-items">
-                <div className="stat-item">
-                  <div className="stat-number">{leetcodeStats.problemsSolved}+</div>
-                  <div className="stat-label">Problems Solved</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{leetcodeStats.ranking}</div>
-                  <div className="stat-label">Global Ranking</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{leetcodeStats.badges}</div>
-                  <div className="stat-label">Badges Earned</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{leetcodeStats.streak}</div>
-                  <div className="stat-label">Day Streak</div>
-                </div>
-              </div>
-            </div>
 
-            {/* GitHub Stats */}
-            <div className="stat-card modern-card">
-              <div className="stat-card-header">
-                <div className="stat-card-icon github-icon">
-                  <GitBranch className="w-6 h-6" />
-                </div>
-                <h4 className="stat-card-title">GitHub</h4>
-              </div>
-              
-              <div className="stat-items">
-                <div className="stat-item">
-                  <div className="stat-number">{githubStats.repositories}</div>
-                  <div className="stat-label">Repositories</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{githubStats.contributions}</div>
-                  <div className="stat-label">Contributions</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{githubStats.followers}</div>
-                  <div className="stat-label">Followers</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{githubStats.stars}</div>
-                  <div className="stat-label">Stars Earned</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

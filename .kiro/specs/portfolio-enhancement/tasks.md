@@ -217,7 +217,6 @@
 
   - [x] 14.2 Create constants file and data management
 
-
     - Create utils/constants.js with all personal information and project data
     - Implement data helpers for consistent formatting
     - Add configuration options for animations and themes

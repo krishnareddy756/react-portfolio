@@ -189,38 +189,50 @@ export const CERTIFICATIONS = [
     date: "2024",
     description: "Developed Android apps using Kotlin and Java, gaining hands-on experience in mobile app development lifecycle.",
     skills: ["Android Development", "Kotlin", "Java", "Mobile UI/UX"],
-    certificateUrl: "https://drive.google.com/file/d/1aAlZzOfOTUOxv7WGQKDARW4Qlaa5yqp9/view?usp=sharing", // Add actual certificate URL
-    verified: true
+    certificateUrl: "https://drive.google.com/file/d/1aAlZzOfOTUOxv7WGQKDARW4Qlaa5yqp9/view?usp=sharing",
+    verified: true,
+    logo: "smartphone", // Using Lucide icon as fallback
+    color: "emerald",
+    category: "Development"
   },
   {
     id: 2,
-    title: "AWS Cloud Foundations",
-    issuer: "AWS Academy",
+    title: "AWS Cloud Practitioner",
+    issuer: "Amazon Web Services",
     date: "2024",
-    description: "Completed AWS Academy Cloud Foundations and AWS Cloud Architecting programs, covering core cloud concepts and architectural best practices.",
-    skills: ["AWS Cloud", "Cloud Architecture", "Cloud Foundations", "Best Practices"],
-    certificateUrl: "https://drive.google.com/file/d/1FwBX62Q2-y7BXPK7Qr4EMvGEFzKtwkl7/view?usp=sharing",
-    verified: true
-  },
-  {
-    id: 4,
-    title: "AWS Cloud Architecting",
-    issuer: "AWS Academy",
-    date: "2024",
-    description: "Completed AWS Cloud Practitioner certification covering fundamental cloud concepts, AWS services, security, and pricing models.",
-    skills: ["AWS Services", "Cloud Computing", "Security", "Pricing Models"],
-    certificateUrl: "https://drive.google.com/file/d/1PJr_ixokS9ZFZ_QQq8IAMlvi9gVjO44M/view?usp=sharing",
-    verified: true
+    description: "AWS Certified Cloud Practitioner validates foundational, high-level understanding of AWS Cloud, services, and terminology.",
+    skills: ["AWS Cloud", "Cloud Computing", "AWS Services", "Cloud Security"],
+    certificateUrl: "#", // Add your actual certificate URL
+    verified: true,
+    logo: "cloud",
+    color: "orange",
+    category: "Cloud"
   },
   {
     id: 3,
+    title: "MongoDB DBA Associate",
+    issuer: "MongoDB University",
+    date: "2024",
+    description: "MongoDB Database Administrator Associate certification covering database administration, performance optimization, and best practices.",
+    skills: ["MongoDB", "Database Administration", "Performance Tuning", "Data Modeling"],
+    certificateUrl: "#", // Add your actual certificate URL
+    verified: true,
+    logo: "database",
+    color: "green",
+    category: "Database"
+  },
+  {
+    id: 4,
     title: "MERN Stack Developer",
     issuer: "Apna College",
     date: "2024",
     description: "Completed comprehensive MERN Stack course covering MongoDB, Express, React, and Node.js with full-stack project work.",
     skills: ["MongoDB", "Express.js", "React.js", "Node.js", "Full Stack Development"],
-    certificateUrl: "https://drive.google.com/file/d/1dv1Yc4bUVXKpoPQoivn0xmPnsgXlCblC/view?usp=sharing", // Add actual certificate URL
-    verified: true
+    certificateUrl: "https://drive.google.com/file/d/1dv1Yc4bUVXKpoPQoivn0xmPnsgXlCblC/view?usp=sharing",
+    verified: true,
+    logo: "layers", // Using Lucide icon as fallback
+    color: "blue",
+    category: "Development"
   }
 ];
 

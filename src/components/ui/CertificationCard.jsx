@@ -1,60 +1,93 @@
 import React from 'react';
-import { Award, ExternalLink, CheckCircle, Calendar, Building } from 'lucide-react';
+import { 
+  ExternalLink, 
+  CheckCircle, 
+  Calendar, 
+  Building, 
+  Smartphone, 
+  Cloud, 
+  Database, 
+  Layers,
+  Award
+} from 'lucide-react';
 import './CertificationCard.css';
 
 const CertificationCard = ({ certification, index }) => {
+  // Icon mapping for logos
+  const getLogoIcon = (logoName) => {
+    const iconMap = {
+      'smartphone': Smartphone,
+      'cloud': Cloud,
+      'database': Database,
+      'layers': Layers,
+      'award': Award
+    };
+    
+    const IconComponent = iconMap[logoName] || Award;
+    return <IconComponent className="certification-logo-icon" />;
+  };
+
   return (
-    <div className="modern-card">
-      <div className="flex items-center justify-between mb-4">
-        <div className="icon-wrapper">
-          <Award className="h-6 w-6" />
+    <div className={`certification-card certification-card-${certification.color}`}>
+      {/* Certificate Header with Logo */}
+      <div className="certification-header">
+        <div className={`certification-logo certification-logo-${certification.color}`}>
+          {getLogoIcon(certification.logo)}
         </div>
+        
         {certification.verified && (
-          <div className="badge badge-success">
-            <CheckCircle className="h-3 w-3" />
+          <div className="verification-badge">
+            <CheckCircle className="verification-icon" />
             <span>Verified</span>
           </div>
         )}
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold">{certification.title}</h3>
+      {/* Certificate Content */}
+      <div className="certification-content">
+        <div className="certification-category">
+          {certification.category}
+        </div>
         
-        <div className="flex items-center gap-2 text-sm">
-          <Building className="h-4 w-4 text-primary-color" />
-          <span className="font-medium text-primary-color">{certification.issuer}</span>
+        <h3 className="certification-title">{certification.title}</h3>
+        
+        <div className="certification-issuer">
+          <Building className="issuer-icon" />
+          <span>{certification.issuer}</span>
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-secondary">
-          <Calendar className="h-4 w-4" />
+        <div className="certification-date">
+          <Calendar className="date-icon" />
           <span>{certification.date}</span>
         </div>
 
-        <p className="text-secondary leading-relaxed text-sm">
+        <p className="certification-description">
           {certification.description}
         </p>
 
-        <div>
-          <h4 className="font-medium mb-2 text-sm">Skills Covered:</h4>
-          <div className="flex flex-wrap gap-2">
+        {/* Skills Tags */}
+        <div className="certification-skills">
+          <h4 className="skills-title">Skills Covered:</h4>
+          <div className="skills-tags">
             {certification.skills.map((skill, idx) => (
-              <span key={idx} className="badge">
+              <span key={idx} className={`skill-tag skill-tag-${certification.color}`}>
                 {skill}
               </span>
             ))}
           </div>
         </div>
 
+        {/* View Certificate Button */}
         {certification.certificateUrl && certification.certificateUrl !== '#' && (
-          <div className="pt-2 border-t border-border-color">
+          <div className="certification-actions">
             <a 
               href={certification.certificateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-modern btn-modern-outline w-full justify-center text-sm"
+              className={`view-certificate-btn view-certificate-btn-${certification.color}`}
             >
-              <ExternalLink className="h-4 w-4" />
-              View Certificate
+              <ExternalLink className="btn-icon" />
+              <span>View Certificate</span>
             </a>
           </div>
         )}

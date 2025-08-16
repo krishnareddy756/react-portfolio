@@ -1,11 +1,19 @@
-/* Modern Certifications Section Styles - Matching Skills Section */
+/* Modern Certifications Section Styles */
 
 #certifications {
   background: var(--background-primary);
   position: relative;
 }
 
-/* Certifications Categories - Same as Skills Categories */
+/* Certifications Grid Layout */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Legacy Categories (keeping for backward compatibility) */
 .certifications-categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -92,8 +100,13 @@
   outline-offset: 2px;
 }
 
-/* Responsive Design - Same as Skills Section */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
   .certifications-categories {
     grid-template-columns: 1fr;
     gap: 1.5rem;
